@@ -1,0 +1,13 @@
+<div class="card mb-3 mt-1 shadow-sm">
+
+  <!-- Отображение текста поста -->
+  <div class="card-body">
+    <p class="card-text">
+         <strong class="d-block text-gray-dark">{{ memory.place_name }}</strong>
+         {{ memory.text|linebreaksbr }}
+    </p>
+
+      <small class="text-muted">{{ memory.pub_date }}</small>
+  </div>
+
+</div>
