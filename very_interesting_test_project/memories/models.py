@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from . import fields as map_fields
 
 User = get_user_model()
 
@@ -9,9 +10,8 @@ class Memory(models.Model):
     text = models.TextField(verbose_name='Воспоминание')
     pub_date = models.DateTimeField("date published", auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="memories")
-
-    # address =
-    # geolocation =
+    address = map_fields.AddressField(max_length=200, blank=False, null=True)
+    geolocation = map_fields.GeoLocationField(max_length=100, blank=False, null=True)
 
     class Meta:
         ordering = ['-pub_date']
