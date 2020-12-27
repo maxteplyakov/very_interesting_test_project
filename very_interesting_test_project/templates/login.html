@@ -6,6 +6,6 @@
 <div class="container text-center">
     <p>Добро пожаловать!</p>
     <p>Данный сервис позволяет надежно хранить ваши воспоминания.</p>
-    <a class="btn btn-lg btn-primary" href="" role="button">Войти с помощью Facebook</a>
+    <a class="btn btn-lg btn-primary" href="{% url 'social:begin' 'facebook' %}" role="button">Войти с помощью Facebook</a>
 </div>
 {% endblock %}
