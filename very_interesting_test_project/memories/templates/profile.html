@@ -41,7 +41,13 @@
             <div class="col-md-9">
                 <!-- Начало блока с отдельным воспоминанием -->
                 {% if paginator.count == 0 %}
-                Вы еще не добавили ни одного воспоминания
+                    <div class="card mb-3 mt-1 shadow-sm text-center">
+                      <div class="card-body">
+                        <p class="card-text">
+                             У вас нет сохраненных воспоминаний
+                        </p>
+                      </div>
+                    </div>
                 {% else%}
                     {% for memory in page %}
                         {% include "memory_item.html" with memory=memory %}
