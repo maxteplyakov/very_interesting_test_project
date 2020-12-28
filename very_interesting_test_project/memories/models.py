@@ -12,6 +12,7 @@ class Memory(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="memories")
     address = map_fields.AddressField(max_length=200, blank=False, null=True, verbose_name='Адрес')
     geolocation = map_fields.GeoLocationField(max_length=100, blank=False, null=True, verbose_name='Координаты')
+    img_url = models.CharField(max_length=300, null=True, blank=True)
 
     class Meta:
         ordering = ['-pub_date']

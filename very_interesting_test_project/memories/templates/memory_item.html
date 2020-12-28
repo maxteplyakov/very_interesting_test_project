@@ -2,11 +2,16 @@
 
   <!-- Отображение текста поста -->
   <div class="card-body">
+    <p>
+        <img class="card-img-top" src="{{ memory.img_url }}">
+    </p>
     <p class="card-text">
          <strong class="d-block text-gray-dark">{{ memory.place_name }}</strong>
          {{ memory.text|linebreaksbr }}
     </p>
+    <p>
 
+    </p>
       <small class="text-muted">{{ memory.pub_date }}</small>
   </div>
 

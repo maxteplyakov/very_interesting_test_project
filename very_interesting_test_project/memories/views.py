@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.conf import settings
 
 from .models import Memory
 from .forms import MemoryForm
+
 
 def login(request):
     return render(request, 'login.html')
@@ -32,8 +34,14 @@ def new_memory(request):
 
     form = MemoryForm(request.POST, files=request.FILES or None)
     if form.is_valid():
-        post = form.save(commit=False)
-        post.author = request.user
+        memory = form.save(commit=False)
+        memory.author = request.user
+        memory.img_url = "https://maps.googleapis.com/maps/api/" \
+                         "staticmap?center={}&zoom=13&size=600x300&" \
+                         "maptype=roadmap&markers=color:red%7Clabel:C%7C" \
+                         "{}&key={}".format(
+            memory.geolocation, memory.geolocation, settings.GOOGLE_MAPS_API_KEY
+        )
         form.save()
         return redirect('/')
     return render(request, 'new_memory_form.html', {'form': form})
